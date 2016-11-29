@@ -2,6 +2,6 @@
     "site": {
         "port": 8080,
         "host": "http://127.0.0.1",
-        "name": "RightGif v2"
+        "name": "Zach's Bot Collection"
     }
 }
