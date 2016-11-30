@@ -23,7 +23,7 @@ app.post('/gifbot', (req, res) => {
     let data = null;
     
     axios.get(`http://api.giphy.com/v1/gifs/search?q=${ text }&api_key=dc6zaTOxFJmzC`)
-        .then(function (response) {
+        .then(response => {
             const img = response.data.data[0].images.fixed_height.url.replace(`\/\/`, `//`).replace(`\/`, `/`);
 
             data = {
@@ -38,7 +38,7 @@ app.post('/gifbot', (req, res) => {
     
             res.json(data);
         })
-        .catch(function (error) {
+        .catch(error => {
             data = {
                 response_type: 'in_channel', // public to the channel
                 text: '404 could not find GIF'
@@ -47,7 +47,9 @@ app.post('/gifbot', (req, res) => {
             res.json(data);
         }
     );
-});
+    
+    // Don't put a return here or any type of response.
+    });
 
 // Zach's BTC Bot
 app.post('/btcbot', (req, res) => {
@@ -58,7 +60,7 @@ app.post('/btcbot', (req, res) => {
     let data = null;
     
     axios.get(`https://api.coindesk.com/v1/bpi/currentprice/${ text }.json`)
-        .then(function (response) {
+        .then(response => {
             const value = response.data.bpi[text].rate;
 
             data = {
@@ -66,14 +68,14 @@ app.post('/btcbot', (req, res) => {
                 text: `The price of 1 bitcoin in ${ text } is $${ value }`,
                 attachments: [
                     {
-                        image_url: 'https://bitcoincharts.com/charts/chart.png?width=940&m=bitstampUSD&SubmitButton=Draw&r=60&i=&c=0&s=&e=&Prev=&Next=&t=S&b=&a1=&m1=10&a2=&m2=25&x=0&i1=&i2=&i3=&i4=&v=1&cv=0&ps=0&l=0&p=0&'
+                        image_url: `https://bitcoincharts.com/charts/chart.png?width=940&m=coinbase${ text }&SubmitButton=Draw&r=60&i=&c=0&s=&e=&Prev=&Next=&t=S&b=&a1=&m1=10&a2=&m2=25&x=0&i1=&i2=&i3=&i4=&v=1&cv=0&ps=0&l=0&p=0&`
                     }
                 ]
             };
     
             res.json(data);
         })
-        .catch(function (error) {
+        .catch(error => {
             data = {
                 response_type: 'in_channel', // public to the channel
                 text: '404 could not find the btc price for that currency'
@@ -82,6 +84,8 @@ app.post('/btcbot', (req, res) => {
             res.json(data);
         }
     );
+    
+    // Don't put a return here or any type of response.
 });
 
 /*
