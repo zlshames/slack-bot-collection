@@ -5,6 +5,7 @@ const koa          = require('koa');
 const json         = require('koa-json');
 const bodyParser   = require('koa-bodyparser');
 const router       = require('koa-router')();
+//const io           = require('koa-socket');
 const axios        = require('axios');
 
 const bots         = require('./lib/Bots');
@@ -37,9 +38,13 @@ router
         switch (command.trim().toLowerCase()) {
             case 'gif' : this.body = yield bots.getGif(params); break;
             case 'btc' : this.body = yield bots.getBtc(params); break;
+            case 'weather' : this.body = yield bots.getWeather(params); break;
             default : this.body = 'Invalid command. Please use one of the following: gif, btc';
         }
     });
+    
+// Socket.io start
+//io.attach(app);
 
 // Set port & listen
 app.listen(config.site.port, () => {
