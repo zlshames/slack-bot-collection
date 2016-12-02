@@ -47,6 +47,6 @@ router
 //io.attach(app);
 
 // Set port & listen
-app.listen(config.site.port, () => {
-	console.log(config.site.name + " running on port " + config.site.port);
+app.listen(process.env.PORT || config.site.port, () => {
+	console.log(config.site.name + " running on port " + config.site.port + "...");
 });
