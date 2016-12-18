@@ -23,26 +23,26 @@ app.use(function* (next) {
 });
 
 router
-    .post('/', function * (next) {
-        const body = this.request.body;
-        
-        const user = body.user_name;
-        const text = body.text;
-        const channel = body.hannel_name;
-        
-        const command = text.split(' ')[0];
-        const params = text.substring(text.indexOf(' ') + 1, text.length).toUpperCase();
-        
-        let data = null;
-        
-        switch (command.trim().toLowerCase()) {
-            case 'gif' : this.body = yield bots.getGif(params); break;
-            case 'btc' : this.body = yield bots.getBtc(params); break;
-            case 'weather' : this.body = yield bots.getWeather(params); break;
-            default : this.body = 'Invalid command. Please use one of the following: gif, btc';
-        }
-    });
-    
+		.post('/', function * (next) {
+				const body = this.request.body;
+
+				const user = body.user_name;
+				const text = body.text;
+				const channel = body.hannel_name;
+
+				const command = text.split(' ')[0];
+				const params = text.substring(text.indexOf(' ') + 1, text.length);
+
+				let data = null;
+
+				switch (command.trim().toLowerCase()) {
+						case 'gif' : this.body = yield bots.getGif(params); break;
+						case 'btc' : this.body = yield bots.getBtc(params); break;
+						case 'weather' : this.body = yield bots.getWeather(params); break;
+						default : this.body = 'Invalid command. Please use one of the following: gif, btc';
+				}
+		});
+
 // Socket.io start
 //io.attach(app);
 
