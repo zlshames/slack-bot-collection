@@ -28,11 +28,10 @@ router
 
 				const user = body.user_name;
 				const text = body.text;
-				const channel = body.hannel_name;
+				const channel = body.channel_name;
 
 				const command = text.split(' ')[0];
 				const params = text.substring(text.indexOf(' ') + 1, text.length);
-
 				let data = null;
 
 				switch (command.trim().toLowerCase()) {
