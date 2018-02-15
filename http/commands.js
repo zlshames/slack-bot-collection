@@ -33,7 +33,7 @@ class Commands {
             // Parse response
             const rate = body.bpi[currency.toUpperCase()].rate
             const value = rate.substring(0, rate.indexOf('.') + 3)
-            response = utils.buildResponse('in_channel', value, {
+            response = utils.buildResponse('in_channel', `The current price of Bitcoin in ${ currency.toUpperCase() } is ${ value }`, {
                 'attachments': [{
                     'image_url': `https://bitcoincharts.com/charts/chart.png?width=940&m=bitstamp${ currency.toUpperCase() }&SubmitButton=Draw&r=${ days }&i=&c=0&s=&e=&Prev=&Next=&t=S&b=&a1=&m1=10&a2=&m2=25&x=0&i1=&i2=&i3=&i4=&v=1&cv=0&ps=0&l=0&p=0&`
                 }]
