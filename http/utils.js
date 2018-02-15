@@ -1,13 +1,29 @@
-'use strict'
-
 class Utils {
 
-    static isInt(value) {
-        return !isNaN(value) && 
-                parseInt(Number(value)) == value && 
-                !isNaN(parseInt(value, 10));
+    static buildResponse(channel, text) {
+        return this.buildResponse(channel, text, {})
     }
-            
+
+    static buildResponse(channel, text, extra_params) {
+        let output = {'response_type': channel}
+
+        if (text) {
+            output['text'] = text
+        }
+
+        for (let key in extra_params) {
+            if (!output.hasOwnProperty(key)) {
+                output[key] = extra_params[key]
+            }
+        }
+
+        return output
+    }
+
+    static getRand(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
     static getDayForecast(daily, unit) {
         let output = [];
         
@@ -66,10 +82,6 @@ class Utils {
             return '#FF7F2A';
         }
     }
-    
-    static getRand(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    }
 }
 
-module.exports = Utils;
+module.exports = Utils
