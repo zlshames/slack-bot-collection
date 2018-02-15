@@ -2,6 +2,9 @@
   "name": "slack-bot-collection",
   "version": "1.0.0",
   "description": "A slack bot collection",
+  "engines": {
+    "node": "9.5.0"
+  },
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --watch http --exec node -- http/server.js",
