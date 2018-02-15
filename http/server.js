@@ -47,7 +47,6 @@ router.post('/', async (ctx, next) => {
     // If the command isn't valid, return
     if (cmdMap.hasOwnProperty(command)) {
         result =  await cmdMap[command](input)
-        console.log(result)
     } else {
         result = utils.buildResponse('ephemeral', `An unknown command was passed: ${ command }`)
     }
