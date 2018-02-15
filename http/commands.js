@@ -13,7 +13,7 @@ class Commands {
             const inputSplit = input.split(' ')
 
             if (inputSplit[0]) {
-                if (isInteger(inputSplit[0])) {
+                if (Number.isInteger(inputSplit[0])) {
                     days = inputSplit[0]
                 } else {
                     currency = inputSplit[0]
