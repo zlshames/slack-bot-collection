@@ -82,6 +82,12 @@ class Utils {
             return '#FF7F2A';
         }
     }
+
+    static isInt(value) {
+        return !isNaN(value) && 
+                parseInt(Number(value)) == value && 
+                !isNaN(parseInt(value, 10));
+    }
 }
 
 module.exports = Utils

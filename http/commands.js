@@ -13,7 +13,7 @@ class Commands {
             const inputSplit = input.split(' ')
 
             if (inputSplit[0]) {
-                if (Number.isInteger(inputSplit[0])) {
+                if (utils.isInt(inputSplit[0])) {
                     days = inputSplit[0]
                 } else {
                     currency = inputSplit[0]
@@ -33,6 +33,7 @@ class Commands {
             // Parse response
             const rate = body.bpi[currency.toUpperCase()].rate
             const value = rate.substring(0, rate.indexOf('.') + 3)
+            console.log(value)
             response = utils.buildResponse('in_channel', value, {
                 'attachments': [{
                     'image_url': `https://bitcoincharts.com/charts/chart.png?width=940&m=bitstamp${ currency.toUpperCase() }&SubmitButton=Draw&r=${ days }&i=&c=0&s=&e=&Prev=&Next=&t=S&b=&a1=&m1=10&a2=&m2=25&x=0&i1=&i2=&i3=&i4=&v=1&cv=0&ps=0&l=0&p=0&`
@@ -78,6 +79,10 @@ class Commands {
             // Make request
             let res = await fetch(`http://maps.googleapis.com/maps/api/geocode/json?address=${ input }`)
             let body = await res.json()
+
+            if (!body || !body.results) {
+                return utils.buildResponse('ephemeral', 'Failed to fetch geolocation info. Please try again.')
+            }
 
             const location = body.results[0]
             const lat = location.geometry.location.lat

@@ -35,7 +35,10 @@ router.post('/', async (ctx, next) => {
     // Parse request
     const body = ctx.request.body
     const command = body.text.split(' ')[0].trim().toLowerCase()
-    const input = body.text.substring(body.text.indexOf(' ') + 1, body.text.length)
+    let input = ''
+    if (body.text.split(' ').length > 1) {
+        input = body.text.substring(body.text.indexOf(' ') + 1, body.text.length)
+    }
     
     // Declare return variables
     let result = "The server responded strangely... Report this to Zach."
