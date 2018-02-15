@@ -53,8 +53,8 @@ router.post('/', async (ctx, next) => {
     ctx.body = result 
 })
 
-const host = process.env.SERVER_HOST || "127.0.0.1"
-const port = process.env.SERVER_PORT || 8080
+const host = "127.0.0.1"
+const port = process.env.PORT || 8080
 
 app.listen(port, host, () => {
   console.log(`Available on http://${ host }:${ port }`)
