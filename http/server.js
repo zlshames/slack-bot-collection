@@ -16,7 +16,7 @@ app.use(router.allowedMethods())
 // Possible commands
 cmdMap = {
     'btc': commands.bitcoin,
-    'fact': commands.catfact,
+    'catfact': commands.catfact,
     'gif': commands.gif,
     'weather': commands.weather
 }
