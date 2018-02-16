@@ -11,3 +11,4 @@ This is a collection of bots I made for Slack to use as a slash ("/") command
 > - GIF Bot (Pulling from giphy  API)
 > - Weather Bot (Pulling from Dark Sky API)
 > - Bitcoin Bot
+> - CatFacts
