@@ -45,6 +45,26 @@ class Commands {
         return response
     }
 
+    static async catfact(input) {
+        let response = {}
+
+        try {
+            // Make request
+            const res = await fetch(`https://catfact.ninja/fact`)
+            const body = await res.json()
+
+            response = utils.buildResponse('in_channel', `Your cat fact is: ${ body.fact }`, {
+                'attachments': [{
+                    'image_url': `http://thecatapi.com/api/images/get?format=src&type=gif`
+                }]
+            })
+        } catch (err) {
+            response = utils.buildResponse('ephemeral', `The following error occurred: ${ err }`)
+        }
+
+        return response
+    }
+
     static async gif(input) {
         let response = {}
 
