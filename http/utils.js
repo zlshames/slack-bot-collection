@@ -27,7 +27,7 @@ class Utils {
     static getDayForecast(daily, unit) {
         let output = [];
         
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 7; i++) {
             output.push({
                 fallback: `Failed to get weather information`,
                 text: `<http://google.com|${ this.getDay(i) }> - ${ daily.data[i].summary }`,
