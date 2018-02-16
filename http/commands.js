@@ -53,7 +53,7 @@ class Commands {
             const res = await fetch(`https://catfact.ninja/fact`)
             const body = await res.json()
 
-            response = utils.buildResponse('in_channel', `Your cat fact is: ${ body.fact }`, {
+            response = utils.buildResponse('in_channel', `Did you know that: ${ body.fact }`, {
                 'attachments': [{
                     'image_url': `http://thecatapi.com/api/images/get?format=src&type=gif`
                 }]
